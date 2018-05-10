@@ -1,0 +1,54 @@
+﻿<div class="row">
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+    <div ng-controller="ordersController">
+        <div class="col-md-12">
+            <div class="col-md-3">Customer Id</div>
+            <div class="col-md-9"><input type="text" ng-model="Orders.Customer_Id" ng-disabled="false" ng-readonly="false" /></div>
+
+            <div class="col-md-3">Location Name</div>
+            <div class="col-md-9"><input type="text" ng-model="Orders.Location_Name" ng-disabled="false" ng-readonly="false" /></div>
+
+            <div class="col-md-3">Opening Debt</div>
+            <div class="col-md-9"><input type="text" ng-model="Orders.Opening_Debt" ng-disabled="false" ng-readonly="false" /></div>
+
+            <div class="col-md-3">Currency</div>
+            <div class="col-md-9"><input type="text" ng-model="Orders.Currency" ng-disabled="false" ng-readonly="false" /></div>
+
+            <div class="col-md-3">Sales Invoice No</div>
+            <div class="col-md-9"><input type="text" ng-model="Orders.Sales_Invoice_No" ng-disabled="false" ng-readonly="false" /></div>
+
+        </div>
+        <div style="margin-top:20px"></div>
+        <div>
+            <h3>Payments</h3>
+            <div class="row" style="background-color: #f0f0f0;">
+                <div class="col-md-4">Payment No</div>
+                <div class="col-md-4">Payment Date</div>
+                <div class="col-md-4">Payment Description</div>
+                <div class="col-md-4">Payment Amount</div>
+                
+            </div>
+            <div ng-repeat="payment in Orders.Payments" class="row">
+                <div class="col-md-4">{{payment.payment_no}}</div>
+                <div class="col-md-4">{{payment.payment_date}}</div>
+                <div class="col-md-4">{{payment.payment_description}}</div>
+                <div class="col-md-4">{{payment.payment_amount}}</div>
+            </div>
+            <div style="margin-top:20px"></div>
+            <div class="row" style="background-color: #f0f0f0;">
+                <div class="col-md-4">Payment Description:<input type="text" ng-model="PaymentDescription" required /></div>
+                <div class="col-md-4">Payment Amount:<input type="text" ng-model="PaymentAmount" required /></div>
+                <div class="col-md-4"><button ng-click="addPayment()">Add Payment</button></div>
+            </div>
+        </div>
+        <div style="margin-top:20px"></div>
+        <input type="button" value="Add Order" ng-click="createOrder()" />
+    </div>
+    <div style="margin-top:20px"></div>
+    <div class="alert alert-danger" ng-if="error != null">
+        <strong>Danger!</strong> {{error}}
+    </div>
+
+</div>
